@@ -1,2 +1,21 @@
-<h1>Dashboard</h1>
-<p>Welcome to the admin panel.</p>
+<mat-toolbar color="primary">
+  <span>Admin Panel</span>
+  <span class="spacer"></span>
+  @if (user(); as u) {
+    <span class="user-info">{{ u.name }} ({{ u.role }})</span>
+  }
+  <button mat-icon-button (click)="logout()" aria-label="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<main class="dashboard-content">
+  @if (loading()) {
+    <mat-spinner diameter="40"></mat-spinner>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else if (user(); as u) {
+    <h1>Welcome, {{ u.name }}</h1>
+    <p>You are logged in as <strong>{{ u.username }}</strong> with role <strong>{{ u.role }}</strong>.</p>
+  }
+</main>
