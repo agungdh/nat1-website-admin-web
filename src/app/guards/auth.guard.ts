@@ -16,11 +16,33 @@ export function authGuard() {
     return false;
   }
 
-  return authService.checkAuth().pipe(
+    return authService.checkAuth().pipe(
     map(() => true),
     catchError(() => {
       router.navigate(['/login']);
       return of(false);
     })
+  );
+}
+
+export function noAuthGuard() {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+
+  if (authService.isAuthenticated() === true) {
+    router.navigate(['/']);
+    return false;
+  }
+
+  if (authService.isAuthenticated() === false) {
+    return true;
+  }
+
+  return authService.checkAuth().pipe(
+    map(() => {
+      router.navigate(['/']);
+      return false;
+    }),
+    catchError(() => of(true))
   );
 }
