@@ -49,8 +49,7 @@ export class Login {
     this.error.set('');
 
     this.authService.login(this.form.getRawValue()).subscribe({
-      next: (res) => {
-        localStorage.setItem('token', res.token);
+      next: () => {
         this.router.navigate(['/']);
       },
       error: () => {
