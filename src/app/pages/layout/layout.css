@@ -1,0 +1,65 @@
+.layout-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 16px;
+  background: #3f51b5;
+  color: #fff;
+}
+
+.app-title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.active-link {
+  background: rgba(63, 81, 181, 0.12) !important;
+}
+
+.active-link mat-icon,
+.active-link span {
+  color: #3f51b5;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.content {
+  padding: 24px;
+}
+
+.center-spinner {
+  display: flex;
+  justify-content: center;
+  padding-top: 64px;
+}
+
+.error {
+  color: #b71c1c;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 64px;
+}

@@ -1,0 +1,43 @@
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-header">
+      <span class="app-title">Admin Panel</span>
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: false }">
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <span matListItemTitle>Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/tags" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>sell</mat-icon>
+        <span matListItemTitle>Tags</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="topbar">
+      <span class="page-title">Admin Panel</span>
+      <span class="spacer"></span>
+      @if (user(); as u) {
+        <span class="user-info">{{ u.name }} ({{ u.role }})</span>
+      }
+      <button mat-icon-button (click)="logout()" aria-label="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main class="content">
+      @if (loading()) {
+        <div class="center-spinner">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+      } @else if (error()) {
+        <p class="error">{{ error() }}</p>
+      } @else {
+        <router-outlet />
+      }
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

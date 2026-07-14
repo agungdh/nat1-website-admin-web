@@ -1,0 +1,25 @@
+.tags-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.tags-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.center-spinner {
+  display: flex;
+  justify-content: center;
+  padding-top: 64px;
+}
+
+.no-data {
+  text-align: center;
+  color: #757575;
+  padding-top: 64px;
+  font-size: 16px;
+}

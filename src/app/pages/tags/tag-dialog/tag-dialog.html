@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit Tag' : 'Create Tag' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (error()) {
+      <p class="dialog-error">{{ error() }}</p>
+    }
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Angular" />
+      @if (form.controls.name.invalid && form.controls.name.touched) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Slug</mat-label>
+      <input matInput formControlName="slug" placeholder="angular" />
+      @if (form.controls.slug.invalid && form.controls.slug.touched) {
+        <mat-error>Slug is required</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  @if (loading()) {
+    <mat-spinner diameter="20" class="dialog-spinner"></mat-spinner>
+  }
+  <button mat-button (click)="onCancel()" [disabled]="loading()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid || loading()">
+    {{ isEdit ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>
